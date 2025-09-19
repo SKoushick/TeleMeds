@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleMeds - Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-success {
+            background: #27ae60;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card h2, .card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .file-upload {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            background: #f8f9fa;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            color: #3498db;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .upload-subtext {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 70%;
+        }
+
+        .message.user {
+            background: #3498db;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .message.bot {
+            background: white;
+            color: #2c3e50;
+            border: 1px solid #e9ecef;
+        }
+
+        .chat-input-container {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>TeleMeds</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#buy-medicine" class="nav-link">Buy Medicine</a></li>
+                <li class="nav-item"><a href="#find-doctors" class="nav-link">Find Doctors</a></li>
+                <li class="nav-item"><a href="#ai-chatbot" class="nav-link">AI ChatBot</a></li>
+                <li class="nav-item"><a href="#health-records" class="nav-link">Health Records</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Welcome to TeleMeds</h1>
+            <p>Your comprehensive telemedicine platform for all your healthcare needs</p>
+            <div class="hero-buttons">
+                <a href="#find-doctors" class="btn">Find Doctors</a>
+                <a href="#ai-chatbot" class="btn btn-success">AI Assistant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💊</div>
+                    <h3>Buy Medicine</h3>
+                    <p>Order medicines with proper prescription verification for your safety</p>
+                    <a href="#buy-medicine" class="btn">Learn More</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Find Doctors</h3>
+                    <p>Connect with qualified doctors for online consultations</p>
+                    <a href="#find-doctors" class="btn">Book Appointment</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI ChatBot</h3>
+                    <p>Get instant medical advice for simple conditions and wounds</p>
+                    <a href="#ai-chatbot" class="btn">Chat Now</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Health Records</h3>
+                    <p>Store and manage your medical records and prescriptions</p>
+                    <a href="#health-records" class="btn">View Records</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Medicine Section -->
+    <section class="section" id="buy-medicine">
+        <div class="container">
+            <div class="card">
+                <h2>Buy Medicine</h2>
+                <p>Before buying any medicine, a doctor's prescription is important for your safety. Please upload your valid prescription to proceed with your medicine order.</p>
+                
+                <div class="file-upload">
+                    <div class="upload-text">📄 Upload Prescription</div>
+                    <div class="upload-subtext">Click to select your prescription file (Image or PDF)</div>
+                </div>
+                
+                <button class="btn">Upload Prescription</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Doctors Section -->
+    <section class="section" id="find-doctors">
+        <div class="container">
+            <div class="card">
+                <h2>Find Doctors</h2>
+                <p>Fill out the form below to schedule a consultation with our qualified doctors.</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="patientName">Patient Name *</label>
+                        <input type="text" id="patientName" name="patientName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientAge">Patient Age *</label>
+                        <input type="number" id="patientAge" name="patientAge" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientGmail">Patient's Gmail *</label>
+                        <input type="email" id="patientGmail" name="patientGmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientGender">Gender *</label>
+                        <select id="patientGender" name="patientGender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientDob">Date of Birth *</label>
+                        <input type="date" id="patientDob" name="patientDob" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientCondition">Patient's Condition Description *</label>
+                        <textarea id="patientCondition" name="patientCondition" rows="5" required placeholder="Please describe your current condition, symptoms, and any relevant medical history..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Submit Information</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI ChatBot Section -->
+    <section class="section" id="ai-chatbot">
+        <div class="container">
+            <div class="card">
+                <h2>AI ChatBot</h2>
+                <p>Our AI ChatBot can help you with simple medical conditions, wound care advice, and general health information.</p>
+                
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h4>AI Medical Assistant</h4>
+                    </div>
+                    
+                    <div class="chat-messages">
+                        <div class="message bot">
+                            Hello! I'm your AI medical assistant. I can help you with simple medical conditions, wound care, and provide general health advice. How can I assist you today?
+                        </div>
+                        <div class="message user">
+                            I have a small cut on my finger. What should I do?
+                        </div>
+                        <div class="message bot">
+                            For minor cuts, clean the area with soap and water, apply an antiseptic, and cover with a clean bandage. If the cut is deep or bleeding heavily, please consult a healthcare professional immediately.
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" placeholder="Ask me about simple medical conditions...">
+                        <button class="btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Records Section -->
+    <section class="section" id="health-records">
+        <div class="container">
+            <div class="card">
+                <h2>Health Records</h2>
+                <p>Store your medical records, prescriptions, and health documents here. All files are stored locally on your device for privacy.</p>
+                
+                <div class="file-upload">
+                    <div class="upload-text">📁 Choose File</div>
+                    <div class="upload-subtext">Upload images or PDF files of your health records</div>
+                </div>
+                
+                <button class="btn">Upload Record</button>
+                
+                <div class="empty-state">
+                    <div class="empty-icon">📋</div>
+                    <h4>No Records Yet</h4>
+                    <p>Upload your first health record to get started</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="card">
+                <h2>About TeleMeds</h2>
+                <p>TeleMeds is designed to revolutionize healthcare accessibility by providing a complete digital health ecosystem. From prescription management to AI-powered medical assistance, we're committed to making quality healthcare available to everyone.</p>
+                
+                <h3>Technology Stack</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> React.js, JavaScript, HTML5, CSS3</li>
+                    <li><strong>Backend:</strong> Node.js, Express.js, MongoDB</li>
+                    <li><strong>AI:</strong> Google Gemini API</li>
+                    <li><strong>Integrations:</strong> Web3Forms, Calendly</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple chat simulation
+        const chatInput = document.querySelector('.chat-input');
+        const chatMessages = document.querySelector('.chat-messages');
+        const sendBtn = document.querySelector('.chat-input-container .btn');
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(function() {
+                    const responses = [
+                        "I understand your concern. For minor issues, I can provide general guidance, but please consult a healthcare professional for serious symptoms.",
+                        "That's a good question. Based on your description, I'd recommend monitoring the symptoms and seeking medical advice if they persist.",
+                        "Thank you for sharing that information. It's important to stay hydrated and rest. If symptoms worsen, please see a doctor.",
+                        "I can help with general health information, but remember that I'm an AI assistant and cannot replace professional medical advice."
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse);
+                }, 1000);
+            }
+        }
+
+        if (sendBtn) {
+            sendBtn.addEventListener('click', sendMessage);
+        }
+        
+        if (chatInput) {
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

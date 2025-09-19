@@ -1,0 +1,136 @@
+.prescription-info {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #e8f4fd;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+}
+
+.prescription-info h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.prescription-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.file-upload {
+  border: 2px dashed #3498db;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+
+.file-upload:hover {
+  background: #e9ecef;
+  border-color: #2980b9;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.upload-text {
+  color: #3498db;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.upload-subtext {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.file-info {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-left: 4px solid #27ae60;
+}
+
+.file-info p {
+  margin: 5px 0;
+  color: #2c3e50;
+}
+
+.status-message {
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.step-number {
+  background: #3498db;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.step-content p {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .step {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .file-upload {
+    padding: 30px 20px;
+  }
+}
